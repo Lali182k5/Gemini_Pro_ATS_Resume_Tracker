@@ -1,0 +1,13 @@
+streamlit
+python-dotenv
+streamlit-extras
+google-generativeai
+python-docx
+Pillow
+pytesseract
+scikit-learn
+PyPDF2
+docx2txt
+streamlit-option-menu
+pyrebase
+firebase_admin

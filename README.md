@@ -29,8 +29,8 @@ pip
 1.Clone the repository:
 
 ```
-git clone https://github.com/your-repo-name.git
-cd your-repo-name
+git clone https://github.com/Gemini_Pro_ATS_Resume_Tracker.git
+
 ```
 2.Create and activate a virtual environment (optional but recommended):
 ```

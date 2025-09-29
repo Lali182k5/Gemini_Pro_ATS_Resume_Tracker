@@ -10,16 +10,39 @@ import pytesseract
 import base64
 from sklearn.feature_extraction.text import TfidfVectorizer
 from google.api_core.exceptions import InvalidArgument
-from pyrebase import initialize_app
+try:
+    from pyrebase import initialize_app
+except ImportError:
+    from pyrebase4 import initialize_app
 import login
 import signup
-#from firebase_config import firebaseConfig
+from firebase_config import firebaseConfig, firebase, auth, db
 
 load_dotenv()
 genai.configure(api_key=os.getenv("GOOGLE_API_KEY"))
 #genai.configure(api_key="AIzaSyBwDgcn8cpV0x7DjtivK0o9iXi8lk9Q-KM")
 model = genai.GenerativeModel('gemini-pro')
-pytesseract.pytesseract.tesseract_cmd = r'C:\Program Files\Tesseract-OCR\tesseract.exe'
+# Configure tesseract path based on OS
+import platform
+import shutil
+
+# Auto-detect tesseract installation
+tesseract_path = shutil.which('tesseract')
+if tesseract_path:
+    pytesseract.pytesseract.tesseract_cmd = tesseract_path
+elif platform.system() == 'Windows':
+    # Windows default installation paths
+    possible_paths = [
+        r'C:\Program Files\Tesseract-OCR\tesseract.exe',
+        r'C:\Program Files (x86)\Tesseract-OCR\tesseract.exe'
+    ]
+    for path in possible_paths:
+        if os.path.exists(path):
+            pytesseract.pytesseract.tesseract_cmd = path
+            break
+else:
+    # For Linux/Mac, tesseract should be in PATH
+    pass
 
 def extract_text_from_pdf(file):
     reader = PdfReader(file)

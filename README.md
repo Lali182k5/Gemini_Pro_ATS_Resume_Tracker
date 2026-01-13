@@ -18,6 +18,13 @@ Traditional resume screening can be time-consuming. This tool aims to provide *s
 5. Optional integration with an AI/LLM backend (e.g., Gemini Pro API) assists with semantic comparison and feedback generation.
 6. Results are displayed on the Streamlit interface.
 
+## 📦 What It Includes
+- Streamlit-based UIs (`streamlit_app.py` and `enhanced_streamlit_app.py`) with navigation for signup/login and resume analysis
+- Resume ingestion for PDF, DOCX, and image files with OCR fallback
+- Gemini Pro–powered analysis prompts that return match insights, missing keywords, and summaries
+- TF-IDF similarity and keyword gap checks for an explainable, rule-based baseline
+- Firebase-backed authentication and optional history storage hooks
+
 ## 🛠️ Tech Stack
 - **Python**
 - **Streamlit** (UI)
@@ -82,6 +89,8 @@ Open the browser link printed by Streamlit to interact with the ATS interface.
 - Resume parsing depends on file formatting and may fail on poorly structured documents.
 - Some modules (e.g., AI backend) may require API keys or external service setup.
 - No database or backend persistence is implemented.
+- Default Firebase keys are present in source; these should be replaced with environment variables in deployment.
+- No automated tests are provided to guard parsing, scoring, or authentication flows.
 
 ## 🚀 Future Improvements
 - Add support for **PDF/DOCX parsing** with libraries like `PyPDF2` or `python-docx`.
@@ -89,6 +98,12 @@ Open the browser link printed by Streamlit to interact with the ATS interface.
 - Add **unit tests** for backend logic.
 - Improve semantic matching by fine-tuning LLM prompts.
 - Add **downloadable feedback report** (PDF/CSV).
+
+## 🔧 Suggestions to Improve
+- Replace baked-in Firebase config defaults with environment-only secrets and document required variables.
+- Add lightweight unit tests for text extraction, TF-IDF similarity, and auth state helpers to catch regressions.
+- Introduce input validation (file size/type limits, empty JD handling) and clearer error messages when AI or Firebase is unavailable.
+- Automate linting/tests in CI to surface issues earlier.
 
 ## 📌 Key Learnings
 - Building UI with Streamlit
@@ -102,5 +117,4 @@ Fork the repository, make changes, and submit pull requests. Suggestions and iss
 
 ## 📄 License
 This project is licensed under the MIT License.
-
 

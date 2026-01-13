@@ -101,7 +101,7 @@ Open the browser link printed by Streamlit to interact with the ATS interface.
 - Add **downloadable feedback report** (PDF/CSV).
 
 ## 🔧 Suggestions to Improve
-- **Critical:** Replace hardcoded Firebase config defaults with environment variables only and document required variables, including:
+- **Critical:** Replace hardcoded Firebase config defaults with environment variables and document required variables, including:
   - `FIREBASE_API_KEY`
   - `FIREBASE_AUTH_DOMAIN`
   - `FIREBASE_DATABASE_URL`

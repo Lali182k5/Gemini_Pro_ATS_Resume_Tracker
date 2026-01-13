@@ -19,6 +19,7 @@ Traditional resume screening can be time-consuming. This tool aims to provide *s
 6. Results are displayed on the Streamlit interface.
 
 ## 📦 What It Includes
+Key components currently bundled in the project:
 - Streamlit-based UIs (`streamlit_app.py` and `enhanced_streamlit_app.py`) with navigation for signup/login and resume analysis
 - Resume ingestion for PDF, DOCX, and image files with OCR fallback
 - Gemini Pro-powered analysis prompts that return match insights, missing keywords, and summaries
@@ -89,7 +90,7 @@ Open the browser link printed by Streamlit to interact with the ATS interface.
 - Resume parsing depends on file formatting and may fail on poorly structured documents.
 - Some modules (e.g., AI backend) may require API keys or external service setup.
 - No database or backend persistence is implemented.
-- Default Firebase keys are present in source; these should be replaced with environment variables in deployment.
+- Default Firebase keys are present in source; this is a critical security issue and must be replaced with environment variables before deployment.
 - No automated tests are provided to guard parsing, scoring, or authentication flows.
 
 ## 🚀 Future Improvements
@@ -100,7 +101,7 @@ Open the browser link printed by Streamlit to interact with the ATS interface.
 - Add **downloadable feedback report** (PDF/CSV).
 
 ## 🔧 Suggestions to Improve
-- **Critical:** Replace hardcoded Firebase config defaults with environment variables only and document required variables.
+- **Critical:** Replace hardcoded Firebase config defaults with environment variables only (e.g., `FIREBASE_API_KEY`, `FIREBASE_AUTH_DOMAIN`, `FIREBASE_DATABASE_URL`, `FIREBASE_PROJECT_ID`, `FIREBASE_STORAGE_BUCKET`, `FIREBASE_MESSAGING_SENDER_ID`, `FIREBASE_APP_ID`, `FIREBASE_MEASUREMENT_ID`) and document required variables.
 - Add lightweight unit tests for text extraction, TF-IDF similarity, and auth state helpers to catch regressions.
 - Introduce input validation (file size/type limits, empty JD handling) and clearer error messages when AI or Firebase is unavailable.
 - Automate linting/tests in CI to surface issues earlier.

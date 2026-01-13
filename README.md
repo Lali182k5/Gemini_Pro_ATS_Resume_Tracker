@@ -20,7 +20,7 @@ Traditional resume screening can be time-consuming. This tool aims to provide *s
 
 ## 📦 What It Includes
 Key components currently bundled in the project:
-- Streamlit-based UIs (`streamlit_app.py` and `enhanced_streamlit_app.py`) with navigation for signup/login and resume analysis.
+- Streamlit-based user interfaces (`streamlit_app.py` and `enhanced_streamlit_app.py`) with navigation for signup/login and resume analysis.
 - Resume ingestion for PDF, DOCX, and image files with OCR fallback.
 - Gemini Pro-powered analysis prompts that return match insights, missing keywords, and summaries.
 - TF-IDF similarity and keyword gap checks for an interpretable, rule-based baseline.
@@ -90,7 +90,7 @@ Open the browser link printed by Streamlit to interact with the ATS interface.
 - Resume parsing depends on file formatting and may fail on poorly structured documents.
 - Some modules (e.g., AI backend) may require API keys or external service setup.
 - No database or backend persistence is implemented.
-- Default Firebase keys are present in source code; this is a critical security issue and must be replaced with environment variables before deployment.
+- Default Firebase keys are present in source code; this is a critical security issue and must be replaced with environment variables before deployment (see **Suggestions to Improve** for required variables).
 - No automated tests are provided to guard parsing, scoring, or authentication flows.
 
 ## 🚀 Future Improvements

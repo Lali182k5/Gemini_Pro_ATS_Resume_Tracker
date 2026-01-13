@@ -18,6 +18,14 @@ Traditional resume screening can be time-consuming. This tool aims to provide *s
 5. Optional integration with an AI/LLM backend (e.g., Gemini Pro API) assists with semantic comparison and feedback generation.
 6. Results are displayed on the Streamlit interface.
 
+## 📦 What It Includes
+Key components currently bundled in the project:
+- Streamlit-based user interfaces (`streamlit_app.py` and `enhanced_streamlit_app.py`) with navigation for signup/login and resume analysis.
+- Resume ingestion for PDF, DOCX, and image files with OCR fallback.
+- Gemini Pro-powered analysis prompts that return match insights, missing keywords, and summaries.
+- TF-IDF similarity and keyword gap checks for an interpretable, rule-based baseline.
+- Firebase-backed authentication and optional history storage hooks.
+
 ## 🛠️ Tech Stack
 - **Python**
 - **Streamlit** (UI)
@@ -82,6 +90,8 @@ Open the browser link printed by Streamlit to interact with the ATS interface.
 - Resume parsing depends on file formatting and may fail on poorly structured documents.
 - Some modules (e.g., AI backend) may require API keys or external service setup.
 - No database or backend persistence is implemented.
+- Default Firebase keys are present in source code; this is a critical security issue and must be replaced with environment variables before deployment (see **Suggestions to Improve** for required variables).
+- No automated tests are provided to guard parsing, scoring, or authentication flows.
 
 ## 🚀 Future Improvements
 - Add support for **PDF/DOCX parsing** with libraries like `PyPDF2` or `python-docx`.
@@ -89,6 +99,20 @@ Open the browser link printed by Streamlit to interact with the ATS interface.
 - Add **unit tests** for backend logic.
 - Improve semantic matching by fine-tuning LLM prompts.
 - Add **downloadable feedback report** (PDF/CSV).
+
+## 🔧 Suggestions to Improve
+- **Critical:** Replace hardcoded Firebase config defaults with environment variables and document required variables, including:
+  - `FIREBASE_API_KEY`
+  - `FIREBASE_AUTH_DOMAIN`
+  - `FIREBASE_DATABASE_URL`
+  - `FIREBASE_PROJECT_ID`
+  - `FIREBASE_STORAGE_BUCKET`
+  - `FIREBASE_MESSAGING_SENDER_ID`
+  - `FIREBASE_APP_ID`
+  - `FIREBASE_MEASUREMENT_ID`
+- Add lightweight unit tests for text extraction, TF-IDF similarity, and auth state helpers to catch regressions.
+- Introduce input validation (file size/type limits, empty Job Description handling) and clearer error messages when AI or Firebase is unavailable.
+- Automate linting/tests in CI to surface issues earlier.
 
 ## 📌 Key Learnings
 - Building UI with Streamlit
@@ -102,5 +126,3 @@ Fork the repository, make changes, and submit pull requests. Suggestions and iss
 
 ## 📄 License
 This project is licensed under the MIT License.
-
-

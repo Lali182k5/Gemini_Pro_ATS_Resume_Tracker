@@ -100,7 +100,6 @@ Open the browser link printed by Streamlit to interact with the ATS interface.
 Contributions are welcome.  
 Fork the repository, make changes, and submit pull requests. Suggestions and issues are also appreciated.
 
-## 📄 License
-This project is licensed under the MIT License.
+
 
 
